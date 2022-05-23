@@ -1,7 +1,6 @@
 import random, math
 
 
-
 user_wins = 0
 computer_wins = 0
 number_of_rounds = int(input("Type how many rounds you would like to play (please enter a number): "))
@@ -11,7 +10,6 @@ if number_of_rounds == math.nan:
     print("Please enter a number next time")
     quit()
       
-
 
 options = ["rock", "paper", "scissors"]
 
@@ -67,7 +65,7 @@ while round != number_of_rounds:
        round += 1
        
 if user_wins == 1:
-    print("You've won", user_wins, "time!")   
+    print("You've won", user_wins, "time")   
 else: 
     print("You've won", user_wins, "times!")    
 
@@ -75,7 +73,48 @@ if computer_wins == 1:
     print("The computer has won", computer_wins, "time!")   
 else: 
     print("The computer has won", computer_wins, "times!") 
+    
+if user_wins == computer_wins:
+    print("WELCOME TO THE TIE BREAKER ")
+    print("You couldn't even beat the randomized computer generted choices... -__- ... therefore, all ties go to the computer. Be better. ")
+    while user_wins == computer_wins:
+        user_input = input("Type rock, paper, or scissors ").lower()
+        if user_input not in options:
+            print("Please type rock, paper, or scissors. ")
+            continue            
         
-  
+        if user_input == "rock" and computer_pick == "scissors":
+            print("You won!")
+            user_wins += 1
+            round += 1
+    
+        elif user_input == "rock" and computer_pick == "rock":
+            print("You tied... and the computer won. ")
+            computer_wins += 1
+       
+        elif user_input == "paper" and computer_pick == "rock":
+            print("You won!")
+            user_wins += 1
+       
+        elif user_input == "paper" and computer_pick == "paper":
+            print("You tied... and the computer won. ")
+            computer_wins += 1
+       
+        elif user_input == "scissors" and computer_pick == "paper":
+            print("You won!")
+            user_wins += 1
+       
+        elif user_input == "scissors" and computer_pick == "scissors":
+            print("You tied... and the computer won. ")
+            computer_wins += 1
+       
+        else: 
+            print("You lost!")
+            computer_wins += 1
+       
+        if user_wins > computer_wins:
+            print("You've won the tiebreaker and the game! ")   
+        else: 
+            print("You've lost the tiebreaker and the game! ")    
      
-print("Goodbye!")
+print("Looking forward to our rematch... ")
